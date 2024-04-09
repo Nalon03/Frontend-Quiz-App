@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend quiz app</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+  <div id="welcome">
+    <h1>Welcome to the Frontend Quiz!</h1>
+    <p>Pick a subject to get started:</p>
+  </div>
+  <button id="theme-toggle">Toggle Theme</button>
+
+  <div id="app">
+    <div id="quiz-menu">
+      <ul>
+        <li><button class="quiz-button" data-category="HTML">HTML</button></li>
+        <li><button class="quiz-button" data-category="CSS">CSS</button></li>
+        <li><button class="quiz-button" data-category="JavaScript">JAVASCRIPT</button></li>
+        <li><button class="quiz-button" data-category="Accessibility">ACCESSIBILITY</button></li>
+      </ul>
+    </div>
+
+    <div id="quiz-question">
+      <p id="question-number"></p>
+      <h2 id="question-text"></h2>
+      <div class="options">
+        <!-- Options will be populated dynamically by TypeScript -->
+      </div>
+      <button id="submit-answer">Submit answer</button>
+    </div>
+    <div id="quiz-completed">
+      <h1>Quiz completed</h1>
+      <p id="score"></p>
+      <button id="play-again">Play again</button>
+    </div>
+  </div>
+  <script src="./dist/script.js" defer></script>
+</body>
+</html>
