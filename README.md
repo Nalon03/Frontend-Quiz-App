@@ -1,3 +1,5 @@
+# Frontend-Quiz-App
+A challenge to build a quiz app...
 # Frontend Mentor - Frontend quiz app
 
 ![Design preview for the Frontend quiz app coding challenge](./preview.jpg)
