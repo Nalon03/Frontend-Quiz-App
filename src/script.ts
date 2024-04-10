@@ -10,31 +10,32 @@ interface Quiz {
   questions: QuizQuestion[];
 }
 
-let quizzes: Quiz[] = []; // Initialize empty array
+let quizzes: Quiz[] = []; 
 
 // Fetch the quiz data from the JSON file
 async function fetchQuizData() {
   try {
-    const response = await fetch('./dist/data.json'); // Fetch the data.json file
+    const response = await fetch('./dist/data.json'); 
     if (!response.ok) {
       throw new Error('Failed to fetch quiz data');
     }
-    const data = await response.json(); // Parse the JSON response
-    quizzes = data.quizzes; // Assign quizzes array
+    const data = await response.json(); 
+    quizzes = data.quizzes; 
     
-    // Once data is fetched, start the quiz or perform other actions
-    startQuiz(); // Example: call a function to start the quiz
+   
+    startQuiz(); 
   } catch (error) {
     console.error('Error fetching quiz data:', error);
   }
 }
 
-// Call fetchQuizData to fetch the data when the DOM content is loaded
+
 document.addEventListener("DOMContentLoaded", fetchQuizData);
 
 // Function to toggle theme
 function toggleTheme() {
   document.body.classList.toggle("dark-theme");
+  
   // Store the current theme preference in localStorage
   const currentTheme = document.body.classList.contains("dark-theme") ? "dark" : "light";
   localStorage.setItem("theme", currentTheme);
@@ -58,7 +59,7 @@ function startQuiz() {
 
   // Elements
   const quizMenu = document.getElementById("quiz-menu")!;
-  const quizQuestion = document.getElementById("quiz-question")!;
+  const quizQuestion = document.getElementById("question-wrapper")!;
   const quizCompleted = document.getElementById("quiz-completed")!;
   const questionNumber = document.getElementById("question-number")!;
   const questionText = document.getElementById("question-text")!;
@@ -71,6 +72,27 @@ function startQuiz() {
   loadTheme();
 
   themeToggle!.addEventListener("click", toggleTheme);
+
+  // Event listener for quiz menu buttons
+  quizMenu.addEventListener("click", (e) => {
+    if (e.target instanceof HTMLButtonElement) {
+      const category = e.target.dataset.category; // Get category from data-category attribute
+      if (category) {
+        // Show the quiz questions
+        showQuestion(category);
+        
+    
+        const welcome = document.getElementById("welcome");
+        if (welcome) {
+          welcome.style.display = "none";
+        }
+        // Hide the quiz menu
+        quizMenu.style.display = "none";
+
+        quizQuestion.style.display = "flex";
+      }
+    }
+  });
 
   // Function to display question
   function showQuestion(category: string) {
@@ -136,17 +158,6 @@ function startQuiz() {
   }
 
   // Event Listeners
-  quizMenu.addEventListener("click", (e) => {
-    if (e.target instanceof HTMLButtonElement) {
-      const category = e.target.dataset.category; // Get category from data-category attribute
-      if (category) {
-        showQuestion(category);
-        quizMenu.style.display = "none";
-        quizQuestion.style.display = "block";
-      }
-    }
-  });
-
   submitButton.addEventListener("click", submitAnswer);
 
   document.getElementById("play-again")!.addEventListener("click", playAgain);
