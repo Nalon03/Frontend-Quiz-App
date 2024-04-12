@@ -29,7 +29,6 @@ async function fetchQuizData() {
   }
 }
 
-
 document.addEventListener("DOMContentLoaded", fetchQuizData);
 
 // Function to toggle theme
@@ -51,6 +50,30 @@ function loadTheme() {
   }
 }
 
+// Function to toggle theme for quiz buttons
+function toggleQuizButtonTheme() {
+  const quizButtons = document.querySelectorAll('.quiz-button');
+  const quizImageButtons = document.querySelectorAll('.butt-image-h, .butt-image-c, .butt-image-j, .butt-image-a');
+  
+  quizButtons.forEach(button => {
+    button.classList.toggle('dark-theme');
+  });
+
+  quizImageButtons.forEach(button => {
+    button.classList.toggle('dark-theme');
+  });
+}
+
+// Modify toggleTheme function to also toggle quiz button theme
+function toggleThemeAndButtons() {
+  toggleTheme();
+  toggleQuizButtonTheme(); 
+  
+  // Store the current theme preference in localStorage
+  const currentTheme = document.body.classList.contains("dark-theme") ? "dark" : "light";
+  localStorage.setItem("theme", currentTheme);
+}
+
 // Function to start the quiz
 function startQuiz() {
   let currentQuestion = 0;
@@ -67,11 +90,12 @@ function startQuiz() {
   const submitButton = document.getElementById("submit-answer")!;
   const scoreElement = document.getElementById("score")!;
   const themeToggle = document.getElementById("theme-toggle");
+  const nextButton = document.getElementById('next-question') as HTMLButtonElement;
 
   // Load theme preference from localStorage
   loadTheme();
 
-  themeToggle!.addEventListener("click", toggleTheme);
+  themeToggle!.addEventListener("click", toggleThemeAndButtons);
 
   // Event listener for quiz menu buttons
   quizMenu.addEventListener("click", (e) => {
@@ -94,53 +118,97 @@ function startQuiz() {
   });
 
   // Function to display question
-  function showQuestion(category: string) {
-    currentCategory = category;
-    const currentQuiz = quizzes.find(quiz => quiz.title === category);
-    if (currentQuiz) {
-      const currentQuestionData = currentQuiz.questions[currentQuestion];
-      questionNumber.textContent = `Question ${currentQuestion + 1} of ${currentQuiz.questions.length}`;
-      questionText.textContent = currentQuestionData.question;
-      optionsContainer.innerHTML = '';
+function showQuestion(category: string) {
+  currentCategory = category;
+  const currentQuiz = quizzes.find(quiz => quiz.title === category);
+  if (currentQuiz) {
+    const currentQuestionData = currentQuiz.questions[currentQuestion];
+    questionNumber.textContent = `Question ${currentQuestion + 1} of ${currentQuiz.questions.length}`;
+    questionText.textContent = currentQuestionData.question;
+    optionsContainer.innerHTML = '';
 
-      currentQuestionData.options.forEach((option) => {
-        const label = document.createElement('label');
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'answer';
-        input.value = option; // Assign the option value as the answer
-        label.appendChild(input);
-        label.appendChild(document.createTextNode(` ${option}`));
-        optionsContainer.appendChild(label);
+    // Define an array of options labels
+    const optionLabels = ['A', 'B', 'C', 'D'];
+    currentQuestionData.options.forEach((option, index) => {
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'answer';
+      input.value = option; // Assign the option value as the answer
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(` ${optionLabels[index]}. ${option}`)); // Append option label ('a', 'b', 'c', 'd')
+      optionsContainer.appendChild(label);
+    
+      // Add event listener to the radio button
+      input.addEventListener('change', () => {
+        // Remove the 'highlight' class from all labels
+        document.querySelectorAll('.options label').forEach((label) => {
+          label.classList.remove('highlight');
+        });
+        // Add the 'highlight' class to the label if the radio button is checked
+        if (input.checked) {
+          label.classList.add('highlight');
+        }
       });
+    });
 
-      adjustLoaderWidth(); // Call the adjustLoaderWidth function here
-    }
+    adjustLoaderWidth(); // Call the adjustLoaderWidth function here
+  }
+}
+
+
+ // Function to submit answer
+function submitAnswer() {
+  const selectedOption = document.querySelector<HTMLInputElement>('input[name="answer"]:checked');
+  if (!selectedOption) {
+    alert("Please select an answer!");
+    return;
   }
 
-  // Function to submit answer
-  function submitAnswer() {
-    const selectedOption = document.querySelector<HTMLInputElement>('input[name="answer"]:checked');
-    if (!selectedOption) {
-      alert("Please select an answer!");
-      return;
+  const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
+  if (currentQuiz) {
+    const correctAnswer = currentQuiz.questions[currentQuestion].answer;
+
+    // If the selected option matches the correct answer, increment the score
+    if (selectedOption.value === correctAnswer) {
+      score++;
     }
 
-    const answer = selectedOption.value;
+    const options = document.querySelectorAll<HTMLInputElement>('input[name="answer"]');
+    
+    options.forEach(option => {
+      // Remove any existing highlight classes
+      option.parentElement?.classList.remove('correct', 'wrong');
+
+      if (option.value === correctAnswer) {
+        option.parentElement?.classList.add('correct');
+      } else if (option.checked && option.value !== correctAnswer) {
+        option.parentElement?.classList.add('wrong');
+      }
+    });
+
+    submitButton.style.display = 'none';
+    nextButton.style.display = 'block';
+  }
+}
+
+
+  
+  nextButton.addEventListener('click', () => {
     const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
     if (currentQuiz) {
-      const correctAnswer = currentQuiz.questions[currentQuestion].answer;
-      if (answer === correctAnswer) {
-        score++;
-      }
-      currentQuestion++;
-      if (currentQuestion < currentQuiz.questions.length) {
+      if (currentQuestion < currentQuiz.questions.length - 1) {
+        currentQuestion++;
         showQuestion(currentCategory);
+        submitButton.style.display = 'block';
+        nextButton.style.display = 'none';
       } else {
         showCompleted();
+        submitButton.style.display = 'none';
+        nextButton.style.display = 'none';
       }
     }
-  }
+  });
 
   // Function to show quiz completion
   function showCompleted() {
@@ -156,6 +224,7 @@ function startQuiz() {
     showQuestion(currentCategory);
     quizCompleted.style.display = "none";
     quizQuestion.style.display = "block";
+    submitButton.style.display="block";
   }
 
   // Function to adjust the width of the loader

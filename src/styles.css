@@ -11,6 +11,7 @@ button {
 body:not(.dark-theme) {
   background-image: url("./assets/images/pattern-background-desktop-light.svg");
   background-size: cover;
+  background-color: #f4f6fa;
 }
 
 body.dark-theme {
@@ -122,68 +123,101 @@ input:checked + .slider:before {
   width: 470px;
   top: 170px;
   position: absolute;
-  right: 190px;
+  right: 370px;
   justify-content: space-around;
 }
 
 .options label {
   font-family: "Arial";
   font-weight: 700;
-  background-color: #3c4d67;
+  background-color: inherit;
   color: inherit;
   border-radius: 20px;
   height: 50px;
   align-content: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 3px solid #ccc;
+  margin-right: 10px;
+  transition: 0.1s;
 }
-#submit-answer{
-  font-family: "Arial";
-  font-weight: 700;
-  background-color: #3c4d67;
-  color: inherit;
-  border-radius: 20px;
-  height: 42px;
-  width: 130px;
-  margin-right: 240px;
-  margin-top: 100px;
-  border-style: none;
+
+.options label:hover {
+  /* Your existing styles */
+  animation: shake 0.4s ease-in-out; /* Apply shake animation on hover */
+  background-color: #faf0ff
+
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+/* Hide the default radio button */
+.options input[type="radio"] {
+  display: none;
+}
+
+.options label.highlight {
+  border-color: #a928f4;
 }
 
 #submit-answer {
   font-family: "Arial";
   font-weight: 700;
-  background-color: #3c4d67;
+  background-color: inherit;
   color: inherit;
   border-radius: 20px;
-  height: 42px;
-  width: 130px;
-  margin-right: 240px; /* Keep the initial margin-right */
-  margin-top: 100px; /* Change margin-top as needed */
+  height: 50px;
+  width: 450px;
   border-style: none;
   position: absolute; /* Add absolute positioning */
-}
-
-#submit-answer {
-  font-family: "Arial";
-  font-weight: 700;
-  background-color: #3c4d67;
-  color: inherit;
-  border-radius: 20px;
-  height: 42px;
-  width: 130px;
-  margin-right: 240px; /* Keep the initial margin-right */
-  margin-top: 20px; /* Change margin-top as needed */
-  border-style: none;
-  position: absolute; /* Add absolute positioning */
+  align-content: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  top: -60px;
+  background-color: #a928f4;
 }
 
 #submit-answer-container {
   position: absolute;
-  right: 660px; /* Adjust the right position as needed */
-  bottom: 180px; /* Adjust the bottom position as needed */
+  right: 830px; /* Adjust the right position as needed */
 }
 
+#submit-answer:hover{
+  background-color: #9414df;
+}
 
+/* Correct option */
+.options label.correct {
+  border-color: #4caf50;
+}
 
+/* Wrong option */
+.options label.wrong {
+  border-color: red;
+}
+
+#next-question {
+  font-family: "Arial" !important;
+  font-weight: 700;
+  background-color:#a928f4;
+  color: inherit;
+  border-radius: 20px;
+  height: 50px;
+  width: 450px;
+  border-style: none;
+  position: absolute; /* Add absolute positioning */
+  align-content: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
 #app {
   width: 500px;
   margin: 110px auto;
@@ -208,6 +242,7 @@ input:checked + .slider:before {
   left: 9%;
   transform: translateX(-50%);
   border-radius: 15%;
+  border-style: none;
   margin-top: 2%;
   background-color: #fbf3e6;
 }
@@ -216,8 +251,8 @@ input:checked + .slider:before {
 .butt-image-c img,
 .butt-image-j img,
 .butt-image-a img {
-  width: 45px; 
-  height: 40px; 
+  width: 45px;
+  height: 40px;
 }
 .butt-image-h {
   background-color: #fbf3e6;
@@ -239,55 +274,66 @@ input:checked + .slider:before {
 }
 
 .quiz-button {
-  background-color: #3c4d67;
+  background-color: inherit;
   border-radius: 20px;
   width: 500px;
-  color: #fff;
+  color: inherit;
   height: 70px;
   border-style: none;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 10px; 
+  margin-left: 10px;
+  background-color: #ffffff;
 }
+.quiz-button:hover {
+  background-color: #82858b;
+  color: #fff;
+}
+
+.dark-theme .quiz-button {
+  background-color: #3c4d67;
+  color: #fff;
+}
+
 #question-wrapper {
   display: none;
   flex-direction: row;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   height: 100vh;
 }
 #question-div {
   position: absolute;
-  left: 200px;
+  left: 420px;
   top: 210px;
   width: 450px;
 }
 
-.quiz-button:hover {
-  background-color: #304866;
-  color: #fff;
-}
-
 #quiz-completed {
   display: none;
+  flex-direction: column;
 }
 
-#quiz-completed button {
+#play-again {
   padding: 10px 20px;
-  background-color: #1a1049;
+  background-color:#9414df;
   color: #fff;
+  font-size: 20px;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
+  margin-top: 210px;
+  width: 350px;
+  &:hover {
+    background-color: #b54bf3;
+  }
 }
 
-#score{
+#score {
   margin-bottom: 30px;
-}
-
-#play-again{
-  margin-top: 40px;
+  font-size: 50px;
 }
 
 #quiz-completed h1 {
@@ -299,15 +345,16 @@ input:checked + .slider:before {
   height: 10px;
   background-color: #ddd;
   margin-bottom: 20px;
+  border-radius: 20px;
 }
 
 #loader {
   height: 100%;
-  background-color: #4caf50;
+  background-color:#a928f4;
   width: 0%;
   transition: width 0.5s ease-in-out;
+  border-radius: 20px;
 }
-
 
 /* Media query for smaller screens */
 @media screen and (max-width: 280px) {
@@ -350,11 +397,11 @@ input:checked + .slider:before {
     background-image: url("../src/assets/images/tablet-background-light.jpg");
     background-size: cover;
   }
-  
+
   body.dark-theme {
     background-image: url("../src/assets/images/tablet-background-dark.jpg");
     background-size: cover;
-  }  
+  }
 
   #app {
     width: 40%;
