@@ -80,7 +80,6 @@ function startQuiz() {
       if (category) {
         // Show the quiz questions
         showQuestion(category);
-        
     
         const welcome = document.getElementById("welcome");
         if (welcome) {
@@ -114,6 +113,8 @@ function startQuiz() {
         label.appendChild(document.createTextNode(` ${option}`));
         optionsContainer.appendChild(label);
       });
+
+      adjustLoaderWidth(); // Call the adjustLoaderWidth function here
     }
   }
 
@@ -155,6 +156,16 @@ function startQuiz() {
     showQuestion(currentCategory);
     quizCompleted.style.display = "none";
     quizQuestion.style.display = "block";
+  }
+
+  // Function to adjust the width of the loader
+  function adjustLoaderWidth() {
+    const loader = document.getElementById("loader")!;
+    const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
+    if (currentQuiz) {
+      const loaderWidth = ((currentQuestion + 1) / currentQuiz.questions.length) * 100;
+      loader.style.width = `${loaderWidth}%`;
+    }
   }
 
   // Event Listeners

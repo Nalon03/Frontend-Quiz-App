@@ -68,13 +68,24 @@
       <div id="question-div">
         <p id="question-number"></p>
       <h2 id="question-text"></h2>
-    </div>
 
-    <div>
+      <div id="loader-wrapper">
+        <div id="loader"></div>
+      </div>
+      
+    </div>    
+
+    <div opt-sub-but>
       <div class="options">
         <!-- Options will be populated dynamically by TypeScript -->
       </div>
-      <button id="submit-answer">Submit answer</button>
+      <div id="submit-answer-container">
+        <button id="submit-answer">Submit answer</button>
+      </div>
+      </div>
+
+    </div>
+
    
     <div id="quiz-completed">
       <h1>Quiz completed</h1>
@@ -82,9 +93,6 @@
       <button id="play-again">Play again</button>
     </div>
 
-    </div>
-
-  </div>
 
   </div>
   <script src="./dist/script.js" defer></script>
