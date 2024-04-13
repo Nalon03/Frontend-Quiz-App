@@ -20,7 +20,7 @@ body.dark-theme {
   background-image: url("./assets/images/pattern-background-desktop-dark.svg");
   background-size: cover;
 }
-/* Position theme style to the right side of the screen */
+
 #theme-style {
   position: absolute;
   right: 30px;
@@ -79,7 +79,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
+/* Rounded slider */
 .slider.round {
   border-radius: 44px;
 }
@@ -143,9 +143,8 @@ input:checked + .slider:before {
 }
 
 .options label:hover {
-  /* Your existing styles */
-  animation: shake 0.4s ease-in-out; /* Apply shake animation on hover */
-  background-color: #faf0ff
+  animation: shake 0.4s ease-in-out;
+  
 
 }
 
@@ -166,7 +165,7 @@ input:checked + .slider:before {
   border-color: #a928f4;
 }
 
-#submit-answer {
+#submit-answer, #next-question {
   font-family: "Arial";
   font-weight: 700;
   background-color: inherit;
@@ -175,18 +174,12 @@ input:checked + .slider:before {
   height: 50px;
   width: 450px;
   border-style: none;
-  position: absolute; /* Add absolute positioning */
+  position: absolute; 
   align-content: center;
   cursor: pointer;
   padding: 5px 10px;
   border: 1px solid #ccc;
-  top: -60px;
   background-color: #a928f4;
-}
-
-#submit-answer-container {
-  position: absolute;
-  right: 830px; /* Adjust the right position as needed */
 }
 
 #submit-answer:hover{
@@ -203,21 +196,6 @@ input:checked + .slider:before {
   border-color: red;
 }
 
-#next-question {
-  font-family: "Arial" !important;
-  font-weight: 700;
-  background-color:#a928f4;
-  color: inherit;
-  border-radius: 20px;
-  height: 50px;
-  width: 450px;
-  border-style: none;
-  position: absolute; /* Add absolute positioning */
-  align-content: center;
-  cursor: pointer;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-}
 #app {
   width: 500px;
   margin: 110px auto;
@@ -226,6 +204,7 @@ input:checked + .slider:before {
   padding: 20px;
   height: 100px;
 }
+
 #quiz-menu li {
   width: 100%;
   height: 65px;
@@ -311,21 +290,27 @@ input:checked + .slider:before {
 }
 
 #quiz-completed {
+  position: absolute;
+  left: 400px;
+  bottom: 180px;
   display: none;
   flex-direction: column;
+  text-align: center; 
+  border: 1px solid black; 
+  padding: 50px
 }
 
 #play-again {
-  padding: 10px 20px;
+  padding: 10px 25px;
   background-color:#9414df;
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  margin-top: 210px;
-  width: 350px;
+  bottom: 100px;
+  width: 210px;
   &:hover {
     background-color: #b54bf3;
   }
@@ -337,7 +322,7 @@ input:checked + .slider:before {
 }
 
 #quiz-completed h1 {
-  margin-bottom: 20px; /* Adjust the margin as needed */
+  margin-bottom: 20px; 
 }
 
 #loader-wrapper {
@@ -356,69 +341,236 @@ input:checked + .slider:before {
   border-radius: 20px;
 }
 
-/* Media query for smaller screens */
-@media screen and (max-width: 280px) {
-  body:not(.dark-theme) {
-    background-image: url("./assets/images/pattern-background-mobile-light.svg");
-    background-size: cover;
-  }
 
-  /* Dark theme background image */
-  body.dark-theme {
-    background-image: url("./assets/images/pattern-background-mobile-dark.svg");
-    background-size: cover;
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px ) {
+  #welcome p {
+    bottom: 390px;
+    margin-left: 70px;
   }
-
-  #app {
-    padding: 0;
-    width: auto;
-    margin-left: 0;
+  #first-h1{
+    left:450px;
+    bottom: 330px;
+    font-size: 30px;
   }
-
+ #sec-h1{
+  margin-left: 150px;
+ }
+  #quiz-menu {
+    display: flex;
+    justify-content: flex-end; 
+  }
+  
   #quiz-menu ul {
-    margin-left: 0;
+    list-style: none;
+    padding: 20px;
+    margin-right: 170px;
+  }
+  
+  #quiz-menu ul li {
+    margin-bottom: 10px;
+  }
+  
+  #theme-style {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: flex;
+    gap: 10px;
+  }
+  #question-div {
+    position: absolute;
+    margin-left: 120px;
+    top: 190px;
+    width: 450px;
   }
 
-  .quiz-button {
-    width: 100%;
+  .options {
+    display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 490px;
+  top: 170px;
+  position: absolute;
+  margin-right: 30px;
+  justify-content: space-around;
   }
-
-  #quiz-completed {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 14px;
+  #submit-answer-container {
+    position: absolute;
+    margin-right: 40px;
+    margin-bottom: 80px;
   }
+  #next-question{
+    bottom: 18px;
+  }
+  #quiz-completed{
+    position: absolute;
+    right: 250px;
+    bottom: 130px;
+   }
 }
 
-/* Media query for tablet screens */
-@media screen and (min-width: 600px) and (max-width: 1024px) {
-  body:not(.dark-theme) {
-    background-image: url("../src/assets/images/tablet-background-light.jpg");
-    background-size: cover;
-  }
-
-  body.dark-theme {
-    background-image: url("../src/assets/images/tablet-background-dark.jpg");
-    background-size: cover;
-  }
-
-  #app {
-    width: 40%;
-    margin: 180px auto;
-    margin-right: 75px;
-  }
-
-  #quiz-menu ul {
-    margin-left: auto;
-  }
-
-  .quiz-button {
-    width: 100%;
-  }
-
-  #welcome {
-    font-size: 20px;
-    margin-right: 0%;
-  }
+@media only screen and (max-width: 1390px ) {
+  
 }
+
+@media only screen and (min-width: 960px ) {
+  
+  #welcome p {
+    left: 18%;
+    bottom: 390px;
+  }
+  #first-h1{
+    right:330px;
+    bottom: 330px;
+    font-size: 30px;
+  }
+  #sec-h1{
+    left: 195px;
+    font-size: 30px;
+    top: 200px;
+  }
+  #quiz-menu{
+    position: absolute;
+    top: 80px;
+    right: 70px;
+  }
+
+  #theme-style {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: flex;
+    gap: 10px;
+  }
+  #question-div {
+    position: absolute;
+    left: 100px;
+    top: 120px;
+    width: 340px;
+  }
+
+  .options {
+    position: absolute;
+    width: 350px;
+    height: 195px;
+    top: 100px;
+    right: 130px;
+  }
+  #submit-answer{
+    width: 300px;
+    height: 30px;
+  }
+  #submit-answer-container {
+    position: absolute;
+    right: 459px;
+    bottom: 100px;
+  }
+  #next-question{
+    width: 300px;
+    height: 30px;
+  }
+ #quiz-completed{
+  position: absolute;
+  left: 195px;
+  bottom: 130px;
+ }
+}
+
+@media only screen and (min-width: 700px) {
+  #welcome p {
+    left: 20%;
+    top: 275px;
+  }
+  #first-h1{
+    right:230px;
+    top: 200px;
+    font-size: 30px;
+  }
+  #sec-h1{
+    left: 165px;
+    font-size: 30px;
+    top: 240px;
+  }
+  #quiz-menu{
+    position: absolute;
+    top: 15%;
+    left: 30%;
+  }
+  .butt-image-h,
+  .butt-image-c,
+  .butt-image-j,
+  .butt-image-a {
+    position: absolute;
+    top: 0px;
+    left: 9%;
+    transform: translateX(-50%);
+    border-radius: 15%;
+    border-style: none;
+    margin-top: 2%;
+    background-color: #fbf3e6;
+  }
+  .quiz-button {
+    font-size: 20px; 
+    width: 400px;
+    height: 50px;
+  }
+  #quiz-menu ul li {
+    margin-bottom: -5px; 
+    left: 70px;
+    bottom: -50px;
+  }
+
+  .butt-image-h img,
+  .butt-image-c img,
+  .butt-image-j img,
+  .butt-image-a img {
+    width: 25px;
+    height: 20px;
+  }
+  #theme-style {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: flex;
+    gap: 10px;
+  }
+  #question-div {
+    position: absolute;
+    left: 100px;
+    top: 120px;
+    width: 340px;
+  }
+
+  .options {
+    position: absolute;
+    width: 350px;
+    height: 195px;
+    top: 100px;
+    right: 130px;
+  }
+  #submit-answer{
+    width: 300px;
+    height: 30px;
+  }
+  #submit-answer-container {
+    position: absolute;
+    right: 459px;
+    bottom: 100px;
+  }
+  #next-question{
+    width: 300px;
+    height: 30px;
+  }
+ #quiz-completed{
+  position: absolute;
+  left: 20%;
+  bottom: 10%;
+ }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}

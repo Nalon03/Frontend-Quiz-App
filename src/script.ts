@@ -1,4 +1,3 @@
-// Define quiz questions and answers interface
 interface QuizQuestion {
   question: string;
   options: string[];
@@ -31,15 +30,12 @@ async function fetchQuizData() {
 
 document.addEventListener("DOMContentLoaded", fetchQuizData);
 
-// Function to toggle theme
 function toggleTheme() {
   document.body.classList.toggle("dark-theme");
   
-  // Store the current theme preference in localStorage
   const currentTheme = document.body.classList.contains("dark-theme") ? "dark" : "light";
   localStorage.setItem("theme", currentTheme);
 }
-
 // Function to load the theme preference from localStorage
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
@@ -64,7 +60,6 @@ function toggleQuizButtonTheme() {
   });
 }
 
-// Modify toggleTheme function to also toggle quiz button theme
 function toggleThemeAndButtons() {
   toggleTheme();
   toggleQuizButtonTheme(); 
@@ -80,7 +75,6 @@ function startQuiz() {
   let score = 0;
   let currentCategory: string;
 
-  // Elements
   const quizMenu = document.getElementById("quiz-menu")!;
   const quizQuestion = document.getElementById("question-wrapper")!;
   const quizCompleted = document.getElementById("quiz-completed")!;
@@ -100,9 +94,8 @@ function startQuiz() {
   // Event listener for quiz menu buttons
   quizMenu.addEventListener("click", (e) => {
     if (e.target instanceof HTMLButtonElement) {
-      const category = e.target.dataset.category; // Get category from data-category attribute
+      const category = e.target.dataset.category; 
       if (category) {
-        // Show the quiz questions
         showQuestion(category);
     
         const welcome = document.getElementById("welcome");
@@ -134,25 +127,22 @@ function showQuestion(category: string) {
       const input = document.createElement('input');
       input.type = 'radio';
       input.name = 'answer';
-      input.value = option; // Assign the option value as the answer
+      input.value = option; 
       label.appendChild(input);
       label.appendChild(document.createTextNode(` ${optionLabels[index]}. ${option}`)); // Append option label ('a', 'b', 'c', 'd')
       optionsContainer.appendChild(label);
     
-      // Add event listener to the radio button
       input.addEventListener('change', () => {
-        // Remove the 'highlight' class from all labels
         document.querySelectorAll('.options label').forEach((label) => {
           label.classList.remove('highlight');
         });
-        // Add the 'highlight' class to the label if the radio button is checked
         if (input.checked) {
           label.classList.add('highlight');
         }
       });
     });
 
-    adjustLoaderWidth(); // Call the adjustLoaderWidth function here
+    adjustLoaderWidth(); 
   }
 }
 
@@ -168,18 +158,12 @@ function submitAnswer() {
   const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
   if (currentQuiz) {
     const correctAnswer = currentQuiz.questions[currentQuestion].answer;
-
-    // If the selected option matches the correct answer, increment the score
     if (selectedOption.value === correctAnswer) {
       score++;
     }
-
     const options = document.querySelectorAll<HTMLInputElement>('input[name="answer"]');
-    
     options.forEach(option => {
-      // Remove any existing highlight classes
       option.parentElement?.classList.remove('correct', 'wrong');
-
       if (option.value === correctAnswer) {
         option.parentElement?.classList.add('correct');
       } else if (option.checked && option.value !== correctAnswer) {
@@ -190,10 +174,7 @@ function submitAnswer() {
     submitButton.style.display = 'none';
     nextButton.style.display = 'block';
   }
-}
-
-
-  
+}  
   nextButton.addEventListener('click', () => {
     const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
     if (currentQuiz) {
