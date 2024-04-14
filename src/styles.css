@@ -186,12 +186,10 @@ input:checked + .slider:before {
   background-color: #9414df;
 }
 
-/* Correct option */
 .options label.correct {
   border-color: #4caf50;
 }
 
-/* Wrong option */
 .options label.wrong {
   border-color: red;
 }
@@ -343,7 +341,8 @@ input:checked + .slider:before {
 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px ) {
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+
   #welcome p {
     bottom: 390px;
     margin-left: 70px;
@@ -410,11 +409,8 @@ input:checked + .slider:before {
    }
 }
 
-@media only screen and (max-width: 1390px ) {
-  
-}
 
-@media only screen and (min-width: 960px ) {
+@media only screen and (min-width: 960px ){
   
   #welcome p {
     left: 18%;
@@ -479,18 +475,18 @@ input:checked + .slider:before {
 
 @media only screen and (min-width: 700px) {
   #welcome p {
-    left: 20%;
-    top: 275px;
+    left: 18%;
+    top: 355px;
   }
   #first-h1{
-    right:230px;
-    top: 200px;
-    font-size: 30px;
+    right:390px;
+    top: 250px;
+    font-size: 40px;
   }
   #sec-h1{
-    left: 165px;
-    font-size: 30px;
-    top: 240px;
+    left: 198px;
+    font-size: 40px;
+    top: 305px;
   }
   #quiz-menu{
     position: absolute;
@@ -546,8 +542,8 @@ input:checked + .slider:before {
     position: absolute;
     width: 350px;
     height: 195px;
-    top: 100px;
-    right: 130px;
+    top: 130px;
+    right: 200px;
   }
   #submit-answer{
     width: 300px;
@@ -555,12 +551,14 @@ input:checked + .slider:before {
   }
   #submit-answer-container {
     position: absolute;
-    right: 459px;
-    bottom: 100px;
+    right: 509px;
+    bottom: 140px;
   }
   #next-question{
     width: 300px;
     height: 30px;
+    position: absolute;
+    top: 5px;
   }
  #quiz-completed{
   position: absolute;
@@ -568,9 +566,3 @@ input:checked + .slider:before {
   bottom: 10%;
  }
 }
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
