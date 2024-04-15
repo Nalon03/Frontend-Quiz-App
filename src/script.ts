@@ -6,6 +6,7 @@ interface QuizQuestion {
 
 interface Quiz {
   title: string;
+  icon: string;
   questions: QuizQuestion[];
 }
 
@@ -85,6 +86,7 @@ function startQuiz() {
   const scoreElement = document.getElementById("score")!;
   const themeToggle = document.getElementById("theme-toggle");
   const nextButton = document.getElementById('next-question') as HTMLButtonElement;
+  const quizHeader = document.getElementById("quiz-category") as HTMLDivElement;
 
   // Load theme preference from localStorage
   loadTheme();
@@ -110,9 +112,43 @@ function startQuiz() {
     }
   });
 
+// Function to generate the HTML for the quiz menu
+function generateQuizMenu(quizzes: Quiz[]) {
+  const quizMenu = document.getElementById("quiz-menu");
+  if (quizMenu) {
+    const ul = document.createElement("ul");
+    quizzes.forEach(quiz => {
+      const li = document.createElement("li");
+      
+      const button = document.createElement("button");
+      const buttonText = document.createTextNode(quiz.title);
+      button.classList.add("quiz-button");
+      button.dataset.category = quiz.title;
+      button.appendChild(buttonText);
+      li.appendChild(button);
+      
+      const imageButton = document.createElement("button");
+      const image = document.createElement("img");
+      image.src = `./src${quiz.icon.substring(1)}`;
+      imageButton.classList.add(`butt-image-${quiz.title.toLowerCase().charAt(0)}`);
+      imageButton.appendChild(image);
+      li.appendChild(imageButton);
+      
+      ul.appendChild(li);
+    });
+    quizMenu.appendChild(ul);
+  }
+}
+
+// Call the function to generate the quiz menu
+generateQuizMenu(quizzes);
+
+
   // Function to display question
 function showQuestion(category: string) {
   currentCategory = category;
+  quizHeader.style.display = "block";
+  quizHeader.textContent = category;
   const currentQuiz = quizzes.find(quiz => quiz.title === category);
   if (currentQuiz) {
     const currentQuestionData = currentQuiz.questions[currentQuestion];
@@ -129,7 +165,11 @@ function showQuestion(category: string) {
       input.name = 'answer';
       input.value = option; 
       label.appendChild(input);
-      label.appendChild(document.createTextNode(` ${optionLabels[index]}. ${option}`)); // Append option label ('a', 'b', 'c', 'd')
+      var optionLabelSpan = document.createElement('span');
+      optionLabelSpan.className = 'option-label';
+      optionLabelSpan.textContent = optionLabels [index];
+      label.appendChild(optionLabelSpan);
+      label.appendChild(document.createTextNode(`${option}`));
       optionsContainer.appendChild(label);
     
       input.addEventListener('change', () => {
@@ -147,11 +187,11 @@ function showQuestion(category: string) {
 }
 
 
- // Function to submit answer
+// Function to submit answer
 function submitAnswer() {
   const selectedOption = document.querySelector<HTMLInputElement>('input[name="answer"]:checked');
   if (!selectedOption) {
-    alert("Please select an answer!");
+    showAlert("Please select an answer!");
     return;
   }
 
@@ -173,8 +213,35 @@ function submitAnswer() {
 
     submitButton.style.display = 'none';
     nextButton.style.display = 'block';
+    clearAlert(); // Clear alert message when option is selected
   }
-}  
+}
+
+// Function to show alert message
+function showAlert(message: string) {
+  const alertDiv = document.getElementById('alert');
+  if (alertDiv) {
+    // Create alert element
+    const alertMessage = document.createElement('div');
+    alertMessage.classList.add('alert-message');
+    alertMessage.textContent = message;
+
+    // Append alert element to the alert div
+    alertDiv.innerHTML = ''; // Clear previous alerts
+    alertDiv.appendChild(alertMessage);
+  } else {
+    alert(message); // Fallback to default alert if 'alert' div is not found
+  }
+}
+
+// Function to clear alert message
+function clearAlert() {
+  const alertDiv = document.getElementById('alert');
+  if (alertDiv) {
+    alertDiv.innerHTML = ''; // Clear the content of the alert div
+  }
+}
+ 
   nextButton.addEventListener('click', () => {
     const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
     if (currentQuiz) {

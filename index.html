@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frontend quiz app</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
   <link rel="icon" type="image/png" sizes="32x32" href="./src/assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="./src/styles.css">
 </head>
@@ -16,6 +21,8 @@
     <p>Pick a subject to get started:</p>
   </div>
 
+  <div class="header">
+    <div id="quiz-category" style="display: none;"></div>
   <div id="theme-style">
     <img src="./src/assets/images/icon-moon-dark.svg" alt="Dark Mode" class="moon-image">
     <label  class="switch">
@@ -24,44 +31,10 @@
     </label>
     <img src="./src/assets/images/icon-sun-dark.svg" alt="Light Mode" class="sun-image">
   </div>
+</div>
 
   <div id="app">
     <div id="quiz-menu">
-      <ul>
-        <li>
-          <button class="quiz-button" data-category="HTML">
-            HTML
-          </button>
-          <button class="butt-image-h">
-            <img src="./src/assets/images/icon-html.svg">
-          </button>
-        </li>
-        <li>
-          <button class="quiz-button" data-category="CSS">
-            CSS
-          </button>
-          <button class="butt-image-c">
-            <img src="./src/assets/images/icon-css.svg">
-          </button>
-        </li>
-        <li>
-          <button class="quiz-button" data-category="JavaScript">
-            JavaScript
-          </button>
-          <button class="butt-image-j">
-            <img src="./src/assets/images/icon-js.svg">
-          </button>
-        </li>
-        <li>
-          <button class="quiz-button" data-category="Accessibility">
-            Accessibility
-          </button>
-          <button class="butt-image-a">
-            <img src="./src/assets/images/icon-accessibility.svg">
-          </button>
-        </li>
-      </ul>
-      
     </div>
 
     <div id="question-wrapper">
@@ -82,7 +55,8 @@
 
      <div id="submit-answer-container">
         <button id="submit-answer">Submit answer</button>
-          <button id="next-question" style="display: none;">Next question</button>
+        <button id="next-question" style="display: none;">Next question</button>
+        <div id="alert"></div>
      </div>
      
       </div>
