@@ -145,16 +145,24 @@ input:checked + .slider:before {
 .options label:hover {
   /* Your existing styles */
   animation: shake 0.4s ease-in-out; /* Apply shake animation on hover */
-  background-color: #faf0ff
-
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  50% { transform: translateX(2px); }
-  75% { transform: translateX(-2px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* Hide the default radio button */
@@ -189,7 +197,7 @@ input:checked + .slider:before {
   right: 830px; /* Adjust the right position as needed */
 }
 
-#submit-answer:hover{
+#submit-answer:hover {
   background-color: #9414df;
 }
 
@@ -206,7 +214,7 @@ input:checked + .slider:before {
 #next-question {
   font-family: "Arial" !important;
   font-weight: 700;
-  background-color:#a928f4;
+  background-color: #a928f4;
   color: inherit;
   border-radius: 20px;
   height: 50px;
@@ -317,7 +325,7 @@ input:checked + .slider:before {
 
 #play-again {
   padding: 10px 20px;
-  background-color:#9414df;
+  background-color: #9414df;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
@@ -350,7 +358,7 @@ input:checked + .slider:before {
 
 #loader {
   height: 100%;
-  background-color:#a928f4;
+  background-color: #a928f4;
   width: 0%;
   transition: width 0.5s ease-in-out;
   border-radius: 20px;
