@@ -140,6 +140,10 @@ input:checked + .slider:before {
   border: 3px solid #ccc;
   margin-right: 10px;
   transition: 0.1s;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .options label:hover {
@@ -205,10 +209,16 @@ input:checked + .slider:before {
 .options label.correct {
   border-color: #4caf50;
 }
+.options label.correct::after {
+  content: url("./assets/images/icon-correct.svg");
+}
 
 /* Wrong option */
 .options label.wrong {
   border-color: red;
+}
+.options label.wrong::after {
+  content: url("./assets/images/icon-incorrect.svg");
 }
 
 #next-question {
