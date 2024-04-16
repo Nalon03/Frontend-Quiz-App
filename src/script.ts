@@ -179,6 +179,10 @@ function showQuestion(category: string) {
         document.querySelectorAll('.options label').forEach((label) => {
           label.classList.remove('highlight');
         });
+        document.querySelectorAll('.option-label').forEach((optionLabelSpan) => {
+          optionLabelSpan.classList.remove('highlight');
+        });
+        
         
         // Add highlight class to the clicked label and its corresponding option-label
         if (input.checked) {
@@ -211,8 +215,22 @@ function submitAnswer() {
       option.parentElement?.classList.remove('correct', 'wrong');
       if (option.value === correctAnswer) {
         option.parentElement?.classList.add('correct');
+        document.querySelectorAll('.options label').forEach((label) => {
+          label.classList.remove('highlight');
+        });
+        document.querySelectorAll('.option-label').forEach((optionLabelSpan) => {
+          optionLabelSpan.classList.remove('highlight');
+        });
+        
       } else if (option.checked && option.value !== correctAnswer) {
         option.parentElement?.classList.add('wrong');
+        document.querySelectorAll('.options label').forEach((label) => {
+          label.classList.remove('highlight');
+        });
+        document.querySelectorAll('.option-label').forEach((optionLabelSpan) => {
+          optionLabelSpan.classList.remove('highlight');
+        });
+        
       }
     });
 
@@ -276,7 +294,7 @@ function clearAlert() {
     score = 0;
     showQuestion(currentCategory);
     quizCompleted.style.display = "none";
-    quizQuestion.style.display = "block";
+    quizQuestion.style.display = "flex";
     submitButton.style.display="block";
   }
 

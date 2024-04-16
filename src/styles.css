@@ -246,17 +246,26 @@ input:checked + .slider:before {
 }
 
 .options label.correct {
+  border-style: solid;
   border-color: #4caf50;
 }
 .options label.correct::after {
   content: url("./assets/images/icon-correct.svg");
+  position: absolute;
+  justify-content: center;
+  left: 90%;
 }
 
+
 .options label.wrong {
+  border-style: solid;
   border-color: red;
 }
 .options label.wrong::after {
   content: url("./assets/images/icon-incorrect.svg");
+  position: absolute;
+  justify-content: center;
+  left: 90%;
 }
 
 #app {
