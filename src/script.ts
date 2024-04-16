@@ -285,7 +285,7 @@ function clearAlert() {
   function showCompleted() {
     quizQuestion.style.display = "none";
     quizCompleted.style.display = "block";
-    scoreElement.textContent = `You scored ${score} out of ${quizzes.find(quiz => quiz.title === currentCategory)?.questions.length ?? 0}`;
+    scoreElement.innerHTML = `<span class=" score-main">${score}</span><br> <span class="score-divider">out of <span class="question-count">${quizzes.find(quiz => quiz.title === currentCategory)?.questions.length ?? 0}</span></span>`;
   }
 
   // Function to play again
