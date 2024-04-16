@@ -24,15 +24,15 @@ body.dark-theme {
 }
 #quiz-category {
   position: absolute;
-  left: 120px;
-  top: 90px;
+  left: 197px;
+  top: 120px;
   color: inherit;
   font-size: 1.5rem;
   font-weight: 600;
 }
 #theme-style {
   position: absolute;
-  right: 30px;
+  right: 50px;
   top: 90px;
   display: flex;
   gap: 10px;
@@ -99,17 +99,16 @@ input:checked + .slider:before {
 
 #first-h1 {
   position: absolute;
-  top: 29%;
-  left: 27%;
+  top: 25%;
+  left: 30%;
   transform: translate(-50%, -50%);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 200%;
-  font-weight: 200;
+  font-size: 50px;
+  font-weight: 400;
 }
 #sec-h1 {
   position: absolute;
-  top: 37%;
-  left: 30%;
+  top: 34%;
+  left: 29%;
   transform: translate(-50%, -50%);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 250%;
@@ -117,32 +116,33 @@ input:checked + .slider:before {
 
 #welcome p {
   position: absolute;
-  top: 43%;
+  top: 44%;
   left: 26%;
   transform: translate(-50%, -50%);
   font-style: italic;
-  font-family: "Arial";
-  font-weight: 700;
+  font-weight: 500;
   color: #7c8da1;
 }
 .options {
   display: flex;
+  color: inherit;
   flex-direction: column;
   gap: 30px;
-  width: 470px;
-  top: 240px;
+  width: 570px;
+  top: 120px;
   position: absolute;
-  right: 250px;
+  right: 190px;
   justify-content: space-around;
 }
 
 .options label {
-  font-family: "Arial";
-  font-weight: 700;
-  background-color:#FFFFFF;
+  font-family: Arial;
+  size: 28px;
+  font-weight: bold;
+  background-color: #ffffff;
   color: inherit;
   border-radius: 20px;
-  height: 60px;
+  height: 70px;
   align-content: center;
   cursor: pointer;
   padding: 5px 10px;
@@ -153,24 +153,34 @@ input:checked + .slider:before {
   align-items: center;
   gap: 15px;
 }
-.option-label{
+
+.option-label {
   width: 46px;
   height: 46px;
-  background-color:#F4F6FA;
-  color:#626C7F;
+  background-color: #f4f6fa;
+  color: #626c7f;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  padding: 0;
+  margin: p;
 }
 
-.dark-theme .options label{
-  background-color:#3c4d67;
-  color:inherit;
+
+.dark-theme .options label {
+  background-color: #3c4d67;
+  color: inherit;
 }
-.options label:hover {
-  /* Your existing styles */
+ .options label:hover {
   animation: shake 0.4s ease-in-out; /* Apply shake animation on hover */
+}
+#opt-sub-but .options .highlight {
+ border-style:solid;
+ border-color: #a928f4;
+}
+.option-label.highlight {
+  background-color: #9414df;
 }
 
 @keyframes shake {
@@ -196,10 +206,6 @@ input:checked + .slider:before {
   display: none;
 }
 
-.options label.highlight {
-  border-color: #a928f4;
-}
-
 #submit-answer,
 #next-question {
   font-family: "Arial";
@@ -207,8 +213,8 @@ input:checked + .slider:before {
   background-color: inherit;
   color: inherit;
   border-radius: 20px;
-  height: 50px;
-  width: 450px;
+  height: 70px;
+  width: 560px;
   border-style: none;
   position: absolute;
   align-content: center;
@@ -216,8 +222,8 @@ input:checked + .slider:before {
   padding: 5px 10px;
   border: 1px solid #ccc;
   background-color: #a928f4;
-  bottom: 260px;
-  right: 260px;
+  bottom: 130px;
+  right: 198px;
 }
 
 #submit-answer:hover {
@@ -226,16 +232,17 @@ input:checked + .slider:before {
 .alert-message::before {
   position: absolute;
   top: -6px;
- right: 205px;
+  right: 205px;
   height: 40px;
   width: 40px;
   content: url("./assets/images/icon-incorrect.svg");
 }
-#alert{
+#alert {
   position: absolute;
- right: 330px;
+  right: 335px;
   height: 40px;
   width: 200px;
+  bottom: 70px;
 }
 
 .options label.correct {
@@ -273,8 +280,8 @@ input:checked + .slider:before {
 .butt-image-j,
 .butt-image-a {
   position: absolute;
-  top: 0px;
-  left: 9%;
+  top: 3px;
+  left: 10%;
   transform: translateX(-50%);
   border-radius: 15%;
   border-style: none;
@@ -336,12 +343,12 @@ input:checked + .slider:before {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 30vh;
 }
 #question-div {
   position: absolute;
-  left: 120px;
-  top: 210px;
+  margin-right: 1080px;
+  top: 230px;
   width: 450px;
 }
 
@@ -395,6 +402,7 @@ input:checked + .slider:before {
   width: 0%;
   transition: width 0.5s ease-in-out;
   border-radius: 20px;
+  margin-top: 20px;
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -439,6 +447,7 @@ input:checked + .slider:before {
     top: 190px;
     width: 450px;
   }
+ 
   .options {
     display: flex;
     flex-direction: column;

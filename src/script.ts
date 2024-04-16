@@ -139,8 +139,6 @@ function generateQuizMenu(quizzes: Quiz[]) {
     quizMenu.appendChild(ul);
   }
 }
-
-// Call the function to generate the quiz menu
 generateQuizMenu(quizzes);
 
 
@@ -148,36 +146,44 @@ generateQuizMenu(quizzes);
 function showQuestion(category: string) {
   currentCategory = category;
   quizHeader.style.display = "block";
-  quizHeader.textContent = category;
   const currentQuiz = quizzes.find(quiz => quiz.title === category);
   if (currentQuiz) {
+    // Displaying category title with icon
+    const iconPath = `./src/${currentQuiz.icon}`;
+    quizHeader.innerHTML = `<button class="icon-button"><img src="${iconPath}" alt="${category}" /></button> ${category}`;
+    
     const currentQuestionData = currentQuiz.questions[currentQuestion];
     questionNumber.textContent = `Question ${currentQuestion + 1} of ${currentQuiz.questions.length}`;
     questionText.textContent = currentQuestionData.question;
     optionsContainer.innerHTML = '';
 
-    // Define an array of options labels
     const optionLabels = ['A', 'B', 'C', 'D'];
     currentQuestionData.options.forEach((option, index) => {
       const label = document.createElement('label');
       const input = document.createElement('input');
       input.type = 'radio';
       input.name = 'answer';
-      input.value = option; 
+      input.value = option;
       label.appendChild(input);
-      var optionLabelSpan = document.createElement('span');
+      
+      const optionLabelSpan = document.createElement('span');
       optionLabelSpan.className = 'option-label';
-      optionLabelSpan.textContent = optionLabels [index];
+      optionLabelSpan.textContent = optionLabels[index];
       label.appendChild(optionLabelSpan);
+      
       label.appendChild(document.createTextNode(`${option}`));
       optionsContainer.appendChild(label);
-    
+
       input.addEventListener('change', () => {
+        // Remove highlight class from all labels
         document.querySelectorAll('.options label').forEach((label) => {
           label.classList.remove('highlight');
         });
+        
+        // Add highlight class to the clicked label and its corresponding option-label
         if (input.checked) {
           label.classList.add('highlight');
+          optionLabelSpan.classList.add('highlight');
         }
       });
     });
@@ -185,7 +191,6 @@ function showQuestion(category: string) {
     adjustLoaderWidth(); 
   }
 }
-
 
 // Function to submit answer
 function submitAnswer() {
