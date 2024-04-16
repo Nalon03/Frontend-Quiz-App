@@ -99,7 +99,6 @@ function startQuiz() {
       const category = e.target.dataset.category; 
       if (category) {
         showQuestion(category);
-    
         const welcome = document.getElementById("welcome");
         if (welcome) {
           welcome.style.display = "none";
@@ -248,12 +247,10 @@ function showAlert(message: string) {
     const alertMessage = document.createElement('div');
     alertMessage.classList.add('alert-message');
     alertMessage.textContent = message;
-
-    // Append alert element to the alert div
-    alertDiv.innerHTML = ''; // Clear previous alerts
+    alertDiv.innerHTML = ''; 
     alertDiv.appendChild(alertMessage);
   } else {
-    alert(message); // Fallback to default alert if 'alert' div is not found
+    alert(message);
   }
 }
 
@@ -261,7 +258,7 @@ function showAlert(message: string) {
 function clearAlert() {
   const alertDiv = document.getElementById('alert');
   if (alertDiv) {
-    alertDiv.innerHTML = ''; // Clear the content of the alert div
+    alertDiv.innerHTML = ''; 
   }
 }
  
@@ -282,11 +279,17 @@ function clearAlert() {
   });
 
   // Function to show quiz completion
-  function showCompleted() {
-    quizQuestion.style.display = "none";
-    quizCompleted.style.display = "block";
-    scoreElement.innerHTML = `<span class=" score-main">${score}</span><br> <span class="score-divider">out of <span class="question-count">${quizzes.find(quiz => quiz.title === currentCategory)?.questions.length ?? 0}</span></span>`;
+function showCompleted() {
+  quizQuestion.style.display = "none";
+  quizCompleted.style.display = "block";
+  
+  const currentQuiz = quizzes.find(quiz => quiz.title === currentCategory);
+  if (currentQuiz) {
+    const iconPath = `./src/${currentQuiz.icon}`;
+    const categoryHTML = `<div class="score-details-top" ><img src="${iconPath}" alt="${currentCategory}" /> <div>${currentCategory}</div></div>`
+    scoreElement.innerHTML = `<div class="score-details">${categoryHTML}<br><span class="score-main">${score}</span></div><br> <span class="score-divider">out of <span class="question-count">${currentQuiz.questions.length}</span></span>`;
   }
+}
 
   // Function to play again
   function playAgain() {
