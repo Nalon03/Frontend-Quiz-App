@@ -13,6 +13,23 @@
   <link rel="stylesheet" href="./src/styles.css">
 </head>
 <body>
+  
+<div class="header-comp">
+
+  <div class="header">
+    <div id="quiz-category" style="display: none;"></div>
+    <div id="theme-style">
+      <img src="./src/assets/images/icon-sun-dark.svg" alt="Dark Mode" class="moon-image">
+      <label  class="switch">
+        <input id="theme-toggle" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <img src="./src/assets/images/icon-moon-dark.svg" alt="Light Mode" class="sun-image">
+    </div>
+  </div>
+</div>
+
+<div id="body">
 
   <div id="welcome">
     <h1 id="first-h1">Welcome to the</h1>
@@ -21,23 +38,12 @@
     <p>Pick a subject to get started:</p>
   </div>
 
-  <div class="header">
-    <div id="quiz-category" style="display: none;"></div>
-  <div id="theme-style">
-    <img src="./src/assets/images/icon-sun-dark.svg" alt="Dark Mode" class="moon-image">
-    <label  class="switch">
-      <input id="theme-toggle" type="checkbox">
-      <span class="slider round"></span>
-    </label>
-    <img src="./src/assets/images/icon-moon-dark.svg" alt="Light Mode" class="sun-image">
-  </div>
-</div>
 
   <div id="app">
     <div id="quiz-menu">
     </div>
 
-    <div id="question-wrapper">
+    <div id="question-wrapper" >
       <div id="question-div">
         <p id="question-number"></p>
       <h2 id="question-text"></h2>
@@ -68,6 +74,7 @@
       <p id="score"></p>
       <button id="play-again">Play again</button>
     </div>
+</div>
 
 
   </div>
