@@ -110,23 +110,28 @@ input:checked + .slider:before {
   display: flex;
   justify-content: space-between;
   margin-top: 60px;
+  display: flex;
 }
 
 #welcome {
-  width: 80%;
+  width: 90%;
+  margin-top: 160px;
 }
 #first-h1 {
   font-size: 50px;
   font-weight: 100;
+  margin-bottom: -45px;
 }
 #sec-h1 {
   font-size: 250%;
+  margin-left: 10px;
 }
 
 #welcome p {
   font-style: italic;
   font-weight: 500;
   color: #7c8da1;
+  margin-left: 10px;
 }
 .options {
   display: flex;
@@ -261,7 +266,8 @@ input:checked + .slider:before {
 
 #app {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 180px;
+  display: fl;
 }
 
 #quiz-menu li {
@@ -433,8 +439,9 @@ input:checked + .slider:before {
   cursor: pointer;
   width: 520px;
   height: 90px;
-  left: 54%;
+  left: 47%;
   bottom: 60px;
+  position: fixed;
   position: absolute;
   &:hover {
     background-color: #b54bf3;
@@ -474,8 +481,22 @@ input:checked + .slider:before {
     margin-left: 0;
     margin-top: 40px;
   }
+  #welcome {
+    margin-top: 40px;
+    margin-left: 10px;
+  }
   #welcome p {
-    font-size: 20px;
+    font-size: 12px;
+  }
+
+  #first-h1 {
+    margin-block: 0;
+
+    font-size: 35px;
+  }
+  #sec-h1 {
+    margin-block: 0;
+    font-size: 35px;
   }
   #question-wrapper {
     display: none;
@@ -484,14 +505,11 @@ input:checked + .slider:before {
     gap: 20px;
     width: 100%;
   }
-  #first-h1 {
-    margin-block: 0;
-  }
-  #sec-h1 {
-    margin-block: 0;
-  }
   #quiz-menu {
     display: flex;
+    margin-top: 290px;
+    margin-right: 100px;
+    width: 100%;
   }
   #quiz-menu ul {
     list-style: none;
@@ -620,7 +638,43 @@ input:checked + .slider:before {
   }
 }
 
-@media only screen and (min-width: 344px) and (max-width: 690px) {
+@media only screen and (min-width: 320px) and (max-width: 690px) {
+  #app {
+    width: 50;
+    margin: 10px;
+    margin-left: 0;
+    margin-top: 40px;
+  }
+  #welcome {
+    margin-top: 40px;
+    margin-left: 10px;
+  }
+  #welcome p {
+    font-size: 12px;
+  }
+
+  #first-h1 {
+    margin-block: 0;
+
+    font-size: 35px;
+  }
+  #sec-h1 {
+    margin-block: 0;
+    font-size: 35px;
+  }
+  #question-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+  }
+  #quiz-menu {
+    display: flex;
+    margin-top: 290px;
+    margin-right: 100px;
+    width: 100%;
+  }
   body {
     overflow: hidden;
   }
@@ -636,15 +690,14 @@ input:checked + .slider:before {
   .options label.correct::after {
     content: url("./assets/images/icon-correct.svg");
     position: absolute;
-    justify-content: center;
-    left: 65%;
+    left: 140%;
   }
 
   .options label.wrong::after {
     content: url("./assets/images/icon-incorrect.svg");
     position: absolute;
     justify-content: center;
-    left: 65%;
+    left: 140%;
   }
 
   #question-wrapper {
