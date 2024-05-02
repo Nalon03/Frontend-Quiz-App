@@ -1,83 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend quiz app</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend quiz app</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./src/assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="./src/styles.css">
-</head>
-<body>
-  
-<div class="header-comp">
-
-  <div class="header">
-    <div id="quiz-category" style="display: none;"></div>
-    <div id="theme-style">
-      <img src="./src/assets/images/icon-sun-dark.svg" alt="Dark Mode" class="moon-image">
-      <label  class="switch">
-        <input id="theme-toggle" type="checkbox">
-        <span class="slider round"></span>
-      </label>
-      <img src="./src/assets/images/icon-moon-dark.svg" alt="Light Mode" class="sun-image">
-    </div>
-  </div>
-</div>
-
-<div id="body">
-
-  <div id="welcome">
-    <h1 id="first-h1">Welcome to the</h1>
-      <br> 
-      <h1 id="sec-h1">Frontend Quiz!</h1>
-    <p>Pick a subject to get started:</p>
-  </div>
-
-
-  <div id="app">
-    <div id="quiz-menu">
-    </div>
-
-    <div id="question-wrapper" >
-      <div id="question-div">
-        <p id="question-number"></p>
-      <h2 id="question-text"></h2>
-
-      <div id="loader-wrapper">
-        <div id="loader"></div>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./src/assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="header-comp">
+      <div class="header">
+        <div id="quiz-category" style="display: none"></div>
+        <div id="theme-style">
+          <img
+            src="./src/assets/images/icon-sun-dark.svg"
+            alt="Dark Mode"
+            class="moon-image"
+          />
+          <label class="switch">
+            <input id="theme-toggle" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+          <img
+            src="./src/assets/images/icon-moon-dark.svg"
+            alt="Light Mode"
+            class="sun-image"
+          />
+        </div>
       </div>
-      
-    </div>    
+    </div>
 
-    <div id="opt-sub-but">
-      <div class="options">
-        <!-- Options will be populated dynamically by TypeScript -->
+    <div id="body">
+      <div id="welcome">
+        <h1 id="first-h1">Welcome to the</h1>
+        <br />
+        <h1 id="sec-h1">Frontend Quiz!</h1>
+        <p>Pick a subject to get started:</p>
       </div>
 
-     <div id="submit-answer-container">
-        <button id="submit-answer">Submit answer</button>
-        <button id="next-question" style="display: none;">Next question</button>
-        <div id="alert"></div>
-     </div>
-     
+      <div id="app">
+        <div id="quiz-menu"></div>
+
+        <div id="question-wrapper">
+          <div id="question-div">
+            <p id="question-number"></p>
+            <h2 id="question-text"></h2>
+
+            <div id="loader-wrapper">
+              <div id="loader"></div>
+            </div>
+          </div>
+
+          <div id="opt-sub-but">
+            <div class="options">
+              <!-- Options will be populated dynamically by TypeScript -->
+            </div>
+
+            <div id="submit-answer-container">
+              <button id="submit-answer">Submit answer</button>
+              <button id="next-question" style="display: none">
+                Next question
+              </button>
+              <div id="alert"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="quiz-completed">
+          <h1 id="quiz-complted-text">
+            Quiz completed<br />
+            <h1 id="quiz-complted-text-two">You scored...</h1>
+          </h1>
+          <p id="score"></p>
+          <button id="play-again">Play again</button>
+        </div>
       </div>
-
     </div>
-
-    <div id="quiz-completed">
-      <h1 id="quiz-complted-text">Quiz completed<br><h1 id="quiz-complted-text-two">You scored...</h1></h1>
-      <p id="score"></p>
-      <button id="play-again">Play again</button>
-    </div>
-</div>
-
-
-  </div>
-  <script src="./dist/script.js" defer></script>
-</body>
+    <script src="./dist/script.js" defer></script>
+  </body>
 </html>

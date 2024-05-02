@@ -112,21 +112,18 @@ input:checked + .slider:before {
   margin-top: 60px;
 }
 
-#welcome{
+#welcome {
   width: 80%;
-
 }
 #first-h1 {
   font-size: 50px;
   font-weight: 100;
 }
 #sec-h1 {
-
   font-size: 250%;
 }
 
 #welcome p {
-
   font-style: italic;
   font-weight: 500;
   color: #7c8da1;
@@ -473,7 +470,7 @@ input:checked + .slider:before {
 @media only screen and (min-width: 568px) and (max-width: 924px) {
   #app {
     width: 100%;
-    margin:10px;
+    margin: 10px;
     margin-left: 0;
     margin-top: 40px;
   }
