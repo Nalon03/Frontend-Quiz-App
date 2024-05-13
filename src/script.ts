@@ -52,6 +52,7 @@ function toggleTheme() {
     : "light";
   localStorage.setItem("theme", currentTheme);
 }
+
 // Function to load the theme preference from localStorage
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
@@ -260,7 +261,6 @@ function startQuiz() {
   function showAlert(message: string) {
     const alertDiv = document.getElementById("alert");
     if (alertDiv) {
-      // Create alert element
       const alertMessage = document.createElement("div");
       alertMessage.classList.add("alert-message");
       alertMessage.textContent = message;
