@@ -49,18 +49,24 @@ Open index.html in your browser:
 open index.html
 
 Usage
+
 Open the Quiz App:
 Open the index.html file in your browser.
+
 Select a Quiz Category:
 Choose a quiz category (JavaScript, HTML, CSS, or Accessibility) to start the quiz.
+
 Answer Questions:
 Answer the questions presented in the quiz. You will receive real-time feedback on whether your answers are correct or incorrect.
+
 View Your Score:
 After completing the quiz, your score will be displayed immediately.
+
 Contributing
 I welcome contributions to improve this project. If you have suggestions or find any issues, please open an issue or submit a pull request.
 
 Fork the repository.
+
 Create a new branch:
 git checkout -b feature/your-feature-name
 
