@@ -42,13 +42,13 @@ To run this project locally, follow these steps:
    ```bash
    git clone https://github.com/nalon03/frontend-quiz-app.git
 
-Navigate to the project directory:
+# Navigate to the project directory:
 cd frontend-quiz-app
 
 Open index.html in your browser:
 open index.html
 
-Usage
+# Usage
 
 Open the Quiz App:
 Open the index.html file in your browser.
@@ -62,7 +62,7 @@ Answer the questions presented in the quiz. You will receive real-time feedback 
 View Your Score:
 After completing the quiz, your score will be displayed immediately.
 
-Contributing
+#Contributing
 I welcome contributions to improve this project. If you have suggestions or find any issues, please open an issue or submit a pull request.
 
 Fork the repository.
@@ -77,13 +77,14 @@ Push to the branch:
 git push origin feature/your-feature-name
 
 Open a pull request.
-License
+
+# License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Contact
+# Contact
 Feel free to reach out to me via email at nalongrace03@gmail.com if you have any questions or suggestions.
 
-Live Preview
+# Live Preview
 Check out the live preview of the project here.
 https://nalon03.github.io/Frontend-Quiz-App/
 
